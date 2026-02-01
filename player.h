@@ -1,30 +1,19 @@
-#pragma once 
+#pragma once
 #include <string>
-#include<vector>
+#include <vector>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-class Player{
-    private:
-        std::string name;
-        int playerID;
-        double personalCash;
-        std::vector<int> ownedAirlines;
+class Player {
+public:
+    std::string name;
+    double personalCash;
+    std::vector<int> ownedAirlineIds;
 
-        Player(std::string n){
-            name = n;
-            playerID = 1;
-            personalCash = 1000000.0;
-        }
-        void acquireAirline(int airlineID){
-            ownedAirlines.push_back(airlineID);
-        }
-        json toJSON(){
-            return {
-                {"player_name", name},
-                {"personal_cash", personalCash},
-                {"owned_airlines", ownedAirlines}
-            }
-        }
+    Player(std::string n);
+
+    void acquireAirline(int airlineId);
+    json toJson(); 
+    void saveGame(); 
 };
