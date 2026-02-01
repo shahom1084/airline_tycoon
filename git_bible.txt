@@ -1,0 +1,18 @@
+# 1. Start Git
+git init
+
+# 2. Stage your files (The .gitignore will block the junk)
+git add .
+
+# 3. Save your first snapshot
+git commit -m "Initial setup: Player class and JSON save system"
+
+# 4. Rename master to main (Standard practice)
+git branch -M main
+
+# 5. Connect to GitHub (You must create an empty repo on GitHub.com first!)
+# Replace URL with your actual repo link
+git remote add origin https://github.com/YOUR_USERNAME/AirlineTycoon.git
+
+# 6. Upload
+git push -u origin main
