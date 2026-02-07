@@ -11,7 +11,7 @@ Airline::Airline(int id, std::string name, std::string hq) {
 
 json Airline::toJson() {
     return {
-        {"id", id},
+        {"airline_id", id},
         {"airline_name", name},
         {"headquarters", headquarters},
         {"corporate_cash", cashBalance},

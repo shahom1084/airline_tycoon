@@ -7,6 +7,7 @@ using json = nlohmann::json;
 
 class Player {
 public:
+    int id;
     std::string name;
     double personalCash;
     std::vector<int> ownedAirlineIds;

@@ -3,8 +3,8 @@
 #include <iostream>
 
 Player::Player(std::string n) {
-    id = 1
-    name = n;
+    this->id = 1;
+    this->name = n;
     personalCash = 1000000.0;
 }
 
