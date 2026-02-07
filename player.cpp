@@ -5,7 +5,7 @@
 Player::Player(std::string n) {
     this->id = 1;
     this->name = n;
-    personalCash = 1000000.0;
+    this->personalCash = 1000000.0;
 }
 
 void Player::acquireAirline(int airlineId) {
@@ -26,4 +26,14 @@ void Player::saveGame() {
     file << toJson().dump(4);
     file.close();
     std::cout << "Game Saved!\n";
+}
+
+void Player::buy_airline(int airlineId,double price){
+    if(personalCash >= price){
+        personalCash -= price;
+        acquireAirline(airlineId);
+        return "purchased Successfully";
+    } else {
+        return "purchase failed,Not enough cash to buy this airline.\n";
+    }
 }

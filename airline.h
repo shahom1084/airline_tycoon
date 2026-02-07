@@ -11,6 +11,7 @@ public:
     std::string headquarters;
     double cashBalance; 
     int fleetCount;
+    double price;
     
     Airline(int id, std::string name, std::string hq);
 

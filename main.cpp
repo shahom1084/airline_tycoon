@@ -52,14 +52,7 @@ int main (){
         airline->headquarters = airlineData["headquarters"];
         airline->cashBalance = airlineData["corporate_cash"];
         airline->fleetCount = airlineData["fleet_count"];
-        cout << "Game Loaded Successfully!\n";
-        cout << "Player Name: " << player->name << "\n";
-        cout << "Personal Cash: $" << player->personalCash << "\n";
-        cout << "Owned Airlines: " << player->ownedAirlineIds.size() << "\n";
-        cout << "Airline Name: " << airline->name << "\n";
-        cout << "Headquarters: " << airline->headquarters << "\n";
-        cout << "Corporate Cash: $" << airline->cashBalance << "\n";
-        cout << "Fleet Count: " << airline->fleetCount << "\n";
+
     } else {
         cout << "Enter you player name" <<'\n';
         string playerName;
@@ -79,6 +72,37 @@ int main (){
 
         player->acquireAirline(newAirlineID);
     }
+    bool game = true;
+    while(game){
+        cout << "\nPlayer: " << player->name << " | Cash: $" << player->personalCash << " | Owned Airlines: " << player->ownedAirlineIds.size() << '\n';
+        cout << "1. View Airline Details\n";
+        cout << "2. Save Game\n";
+        cout << "3. Buy Airline\n";
+        cout << "4. Exit\n";
+        cout << "Choose an option: ";
+        int choice;
+        cin >> choice;
+        cin.ignore();
+        if(choice == 1){
+            cout << "\nAirline Details:\n";
+            cout << "Name: " << airline->name << "\n";
+            cout << "Headquarters: " << airline->headquarters << "\n";
+            cout << "Corporate Cash: $" << airline->cashBalance << "\n";
+            cout << "Fleet Count: " << airline->fleetCount << "\n";
+        } else if(choice == 2){
+            player->saveGame();
+        } else if(choice == 3){
+            cout << "Enter Airline ID to buy: ";
+            int airlineIdToBuy;
+            cin >> airlineIdToBuy;
+            cout << "Enter Price: ";
+            double price;
+            cin >> price;
+            string result = player->buy_airline(airlineIdToBuy, price);
+            cout << result << '\n';
+        } else if(choice == 4){
+            game = false;
+        } 
     json rootSaveFile;
 
     rootSaveFile["player"] = player->toJson();
@@ -90,7 +114,7 @@ int main (){
         file << rootSaveFile.dump(4); 
         file.close();
         std::cout << "\nSUCCESS: Game saved to 'savegame.json'.\n";
-        std::cout << "Check your project folder to see the database!\n";
+        
     } else {
         std::cerr << "ERROR: Could not open file for saving.\n";
     }
