@@ -28,7 +28,7 @@ void Player::saveGame() {
     std::cout << "Game Saved!\n";
 }
 
-void Player::buy_airline(int airlineId,double price){
+std::string Player::buy_airline(int airlineId,double price){
     if(personalCash >= price){
         personalCash -= price;
         acquireAirline(airlineId);

@@ -17,4 +17,5 @@ public:
     void acquireAirline(int airlineId);
     json toJson(); 
     void saveGame(); 
+    std::string buy_airline(int airlineId, double price);
 };

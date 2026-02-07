@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
-
+#include <iomanip>
 #include<random>
 
 #include "player.h"
@@ -74,7 +74,7 @@ int main (){
     }
     bool game = true;
     while(game){
-        cout << "\nPlayer: " << player->name << " | Cash: $" << player->personalCash << " | Owned Airlines: " << player->ownedAirlineIds.size() << '\n';
+        cout << "\nPlayer: " << player->name << " | Cash: ₹" <<std::fixed << std::setprecision(2) << player->personalCash << " | Owned Airlines: " << player->ownedAirlineIds.size() << '\n';
         cout << "1. View Airline Details\n";
         cout << "2. Save Game\n";
         cout << "3. Buy Airline\n";
@@ -102,7 +102,8 @@ int main (){
             cout << result << '\n';
         } else if(choice == 4){
             game = false;
-        } 
+        }
+    } 
     json rootSaveFile;
 
     rootSaveFile["player"] = player->toJson();
